@@ -3,12 +3,13 @@ import keras
 from keras import backend as K
 import tensorflow as tf
 
-epoch=200
+epoch=100
 batch_size=8
 split=0.5
-nb_experiments=30
+nb_experiments=10
 
-
+import os
+os.environ["CUDA_VISIBLE_DEVICES"]="-1"
 
 
 def optional_categorical_crossentropy(target, output, from_logits=False):
@@ -127,7 +128,7 @@ def get_synthetic_dataset():
     ytest=y[:split_id]
     ytrain=y[split_id:]
 
-    weights=compute_weights_for_CE(ytrain) # Warning : keras does not understand weights in multi-softmax context
+    weights=compute_weights_for_CE(ytrain) # Warning : keras does not understand weights in multi softmax context
 
     # reformat Y
     ytrain_double=reformat_to_multi_output(ytrain)
