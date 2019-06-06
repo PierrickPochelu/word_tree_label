@@ -50,6 +50,11 @@ If it is in the west, is it in the north ?
 The label contains multi-one-hot-vector. Some have a special value "-1" to disable backpropagation.
 
 
+So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west"
+The point : (0.92;-0.15) have label [(0;1);(-1;-1)] meaning the point is to the East, so know South/North softmax is disabled with "-1".
+
 <h2> Application </h2>
+
+We experiment a deep learning on CIFAR10 with bother our multi-optional-softmax and softmax layers. Figure below show decision tree process learnt.
 
 <img src="cifar10_XOR.jpg"/>
