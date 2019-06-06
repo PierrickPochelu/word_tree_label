@@ -1,7 +1,7 @@
 <h1> Neural network and decision tree </h1>
 
 
-The main characterist of supervised classification with neural network is produce prediction with one softmax layer. I implement and experiment neural network with output as path in a decision tree. Some node of this tree can be inclusive or exclusive. Recent developpement in deep learning regarding smarter result have introduced decision tree as output. I propose "optional-multi-softmax" Keras implementation witch unify inclusive and exclusive nodes of those decision tree.
+The main characterist of supervised classification with neural network is produce prediction with one softmax layer. I implement and experiment neural network with output as path in a decision tree. Some node of this tree can be inclusive or exclusive. Recent developpement in deep learning regarding smarter results introduced decision tree as output of neural network. I propose "optional-multi-softmax" Keras implementation witch unify inclusive and exclusive nodes of those decision tree.
 
 This tree decision process is coded as multi-softmax output layer. The expected path (ie label) of the neural network is coded with multi-softmax.
 
