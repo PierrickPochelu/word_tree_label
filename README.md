@@ -29,6 +29,8 @@ Neural network can answer to those question at the same time.
 One point in the west or east ?
 Are points in the north or south ?
 
+<img src="AND.jpg"/>
+
 Neural network have 2 output softmax :
 One label associated to one point have this pattern : [ (P<sub>west</sub>;P<sub>east</sub>) ; (P<sub>north</sub>; P<sub>south</sub>) ]
 So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west"
@@ -42,9 +44,12 @@ Neural network can answer to those questions at the same time.
 Are points in the west or east ?
 If it is in the west, is it in the north ?
 
+<img src="OR.jpg"/>
+
+
 The label contains multi-one-hot-vector. Some have a special value "-1" to disable backpropagation.
 
 
 <h2> Application </h2>
 
-
+<img src="cifar10_XOR.jpg"/>
