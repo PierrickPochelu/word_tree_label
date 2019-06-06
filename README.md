@@ -44,7 +44,7 @@ Neural network can answer to those questions at the same time.
 Are points in the west or east ?
 If it is in the west, is it in the north ?
 
-<img src="OR.jpg"/>
+<img src="XOR.jpg"/>
 
 
 The label contains multi-one-hot-vector. Some have a special value "-1" to disable backpropagation.
