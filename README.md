@@ -19,7 +19,7 @@ Some softmax can be inclusive ("or") or exclusive ("and") in the decision tree.
 
 
 
-<h2> Example with inclusive path </2>
+<h2> Example with inclusive path </h2>
 
 Are point in the north or south ?
 Are point in the west or east ?
