@@ -23,7 +23,10 @@ Keras implementation could not do this properly that's why I create the function
 
  More complex decision logic are possible, like "at least N path among M with N<M", but not possible apriori with softmax layer build to choose one decision to each stage of decision tree.
 
-<h2> Example with inclusive path </h2>
+<!-- ------------------------------------------------------------ -->
+<h2> Small examples </h2>
+
+<h3> Example with inclusive path </h3>
 
 Neural network can answer to those question at the same time.
 One point in the west or east ?
@@ -37,7 +40,8 @@ So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west"
 One correct prediction can be [(0.2;0.8);(0.1;0.9)]
 
 
-<h2> Example with exclusive path </h2>
+
+<h3> Example with exclusive path </h3>
 
 Neural network can answer to those questions at the same time.
 
@@ -53,8 +57,21 @@ The label contains multi-one-hot-vector. Some have a special value "-1" to disab
 So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west"
 The point : (0.92;-0.15) have label [(0;1);(-1;-1)] meaning the point is to the East, so know South/North softmax is disabled with "-1".
 
-<h2> Application </h2>
 
-We experiment a deep learning on CIFAR10 with bother our multi-optional-softmax and softmax layers. Figure below show decision tree process learnt.
+
+<!-- ------------------------------------------------------------ -->
+
+<h2> Application on CIFAR10 </h2>
+
+We experiment a deep learning on CIFAR10 with bother our multi-optional-softmax and softmax layers. Figure below show decision tree process learnt. We use the neural network on 
 
 <img src="cifar10_XOR.jpg"/>
+
+<table>
+ <tr> <th>         </th> <th> animals or vehicles ? </th> <th> CIFAR10 </th> </tr>
+ <tr> <th> softmax </th> <td> 93.05%                </td> <td> 66.69% </td> </tr>
+  <tr> <th> multi optional softmax </th> <td> 93.30%               </td> <td> 65.86% </td> </tr>
+ </table>
+
+<h2> References </h2>
+
