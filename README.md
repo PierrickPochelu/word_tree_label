@@ -83,7 +83,8 @@ Here the corresponding decision tree
 
 Here the results of classic softmax and our multi-optional-softmax implementation. 
 
-<u> After 25 epochs : </u>
+<p>
+<u> After 25 epochs </u>
 <table>
  <tr> <th>         </th> <th> animals or vehicles ? </th> <th> CIFAR10 </th> </tr>
   <tr> <th> softmax <br/>  2 output </th> <td> 92.11%               </td> <td> - </td> </tr>
@@ -91,6 +92,7 @@ Here the results of classic softmax and our multi-optional-softmax implementatio
  <tr> <th> multi optional softmax </th> <td> <b>93.30%</b>             </td> <td> 65.86% </td> </tr>
  </table>
 &#42; To classify "animals or vehicles" with 10 output softmax we look if the class predicted belong to animal or vehicle super-class. 
+</p>
 
 <br/>
 
