@@ -32,7 +32,7 @@ Neural network can answer to those question at the same time.
 One point in the west or east ?
 Are points in the north or south ?
 
-<img src="AND.jpg"/>
+<img src="AND2.jpg"/>
 
 Neural network have 2 output softmax :
 One label associated to one point have this pattern : [ (P<sub>west</sub>;P<sub>east</sub>) ; (P<sub>north</sub>; P<sub>south</sub>) ]
