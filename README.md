@@ -27,7 +27,7 @@ Keras implementation could not do this properly that's why I create the function
 <h2> Small examples </h2>
 
 Here a simple where each coordinates (x;y) we want neural network detect the class represented here with color.
-<img src="SC2.png" width="150px" height="150px"/>
+<img src="SC2.png" width="220px" height="231px"/>
 
 
 
