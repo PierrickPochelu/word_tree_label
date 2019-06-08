@@ -84,7 +84,7 @@ Here the corresponding decision tree
 Here the results of classic softmax and our multi-optional-softmax implementation. 
 
 <p>
-<u> After 25 epochs </u>
+<span style="text-decoration:underline"> After 25 epochs </span>
 <table>
  <tr> <th>         </th> <th> animals or vehicles ? </th> <th> CIFAR10 </th> </tr>
   <tr> <th> softmax <br/>  2 output </th> <td> 92.11%               </td> <td> - </td> </tr>
