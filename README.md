@@ -82,3 +82,7 @@ We experiment a deep learning on CIFAR10 with bother softmax layers and our mult
 <h2> References </h2>
 
 <a href="https://arxiv.org/abs/1612.08242"> YOLO9000 </a>
+
+Alex Krizhevsky, Learning Multiple Layers of Features from Tiny Images, 2009. Cifar10 can be downloaded : https://www.cs.toronto.edu/~kriz/cifar.html  
+
+Joseph Redmon an Ali Farhadi, <it> YOLO9000: Better, Faster, Stronger</it>, CoRR journal, abs/1612.08242, 2016, http://arxiv.org/abs/1612.08242
