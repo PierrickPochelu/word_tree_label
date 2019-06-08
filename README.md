@@ -107,7 +107,6 @@ Here the results of classic softmax and our multi-optional-softmax implementatio
 
 <h2> References </h2>
 
-<a href="https://arxiv.org/abs/1612.08242"> YOLO9000 </a>
 
 Alex Krizhevsky, <it>Learning Multiple Layers of Features from Tiny Images</it>, 2009. https://www.cs.toronto.edu/~kriz/cifar.html  
 
