@@ -69,7 +69,7 @@ We experiment a deep learning on CIFAR10 with bother softmax layers and our mult
 
 <table>
  <tr> <th>         </th> <th> animals or vehicles ? </th> <th> CIFAR10 </th> </tr>
-  <tr> <th> softmax  <br/ 2 output></th> <td> 93.05%               </td> <td> - </td> </tr>
+  <tr> <th> softmax <br/>  2 output </th> <td> 93.05%               </td> <td> - </td> </tr>
   <tr> <th> softmax <br/> 10 output </th> <td> 92.63% <red>*</red>               </td> <td> <b>66.69%</b> </td> </tr>
  <tr> <th> multi optional softmax </th> <td> <b>93.30%</b>             </td> <td> 65.86% </td> </tr>
  </table>
