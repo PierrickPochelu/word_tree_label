@@ -80,8 +80,9 @@ The decision is as follow
 <h3> Experiments </h3>
 
 
-Here the results of classic softmax and our multi-optional-softmax implementation.
+Here the results of classic softmax and our multi-optional-softmax implementation. 
 
+<u> After 25 epochs : </u>
 <table>
  <tr> <th>         </th> <th> animals or vehicles ? </th> <th> CIFAR10 </th> </tr>
   <tr> <th> softmax <br/>  2 output </th> <td> 93.05%               </td> <td> - </td> </tr>
@@ -90,7 +91,8 @@ Here the results of classic softmax and our multi-optional-softmax implementatio
  </table>
 &#42; To classify "animals or vehicles" with 10 output softmax we look if the class predicted belong to animal or vehicle super-class. 
 
-We can observe classify 2 super-class is better describe with our multi-optional-softmax.
+<br/>
+<b> We can observe super-classes are better describe when we add their sub-classes information. </b>
 
 <h2> References </h2>
 
