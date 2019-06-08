@@ -73,6 +73,8 @@ To experiment our contributions we split the famous CIFAR10 dataset to 2 super-c
 
 <img src="cifar10_dataset.PNG"/>
 
+<h3> Experiments </h3>
+
 <img src="cifar10_XOR.jpg"/>
 
 <table>
