@@ -96,14 +96,15 @@ Here the results of classic softmax and our multi-optional-softmax implementatio
 
 <br/>
 
-<u> After 50 epochs : </u>
+<p>
+<em> After 50 epochs </em>
 <table>
  <tr> <th>         </th> <th> animals or vehicles ? </th> <th> CIFAR10 </th> </tr>
   <tr> <th> softmax <br/>  2 output </th> <td> 92.67%               </td> <td> - </td> </tr>
   <tr> <th> softmax <br/> 10 output </th> <td> 93.15% <red>*</red>               </td> <td> <b>68.33%</b> </td> </tr>
  <tr> <th> multi optional softmax </th> <td> <b>93.47%</b>             </td> <td> 66.11% </td> </tr>
  </table>
-
+</p>
 
 <b> We can observe super-classes are better described when we add their sub-classes information. </b>
 
