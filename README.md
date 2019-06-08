@@ -97,7 +97,7 @@ Here the results of classic softmax and our multi-optional-softmax implementatio
 <br/>
 
 <p>
-<em> After 50 epochs </em>
+After 50 epochs
 <table>
  <tr> <th>         </th> <th> animals or vehicles ? </th> <th> CIFAR10 </th> </tr>
   <tr> <th> softmax <br/>  2 output </th> <td> 92.67%               </td> <td> - </td> </tr>
