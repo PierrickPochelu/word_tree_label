@@ -92,7 +92,7 @@ Here the results of classic softmax and our multi-optional-softmax implementatio
 &#42; To classify "animals or vehicles" with 10 output softmax we look if the class predicted belong to animal or vehicle super-class. 
 
 <br/>
-<b> We can observe super-classes are better describe when we add their sub-classes information. </b>
+<b> We can observe super-classes are better described when we add their sub-classes information. </b>
 
 <h2> References </h2>
 
