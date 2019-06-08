@@ -73,7 +73,8 @@ To experiment our contributions we split the famous CIFAR10 dataset to 2 super-c
 
 <img src="cifar10_dataset.PNG"/>
 
-The decision is as follow
+Here the corresponding decision tree
+
 <img src="cifar10_XOR.jpg"/>
 
 
