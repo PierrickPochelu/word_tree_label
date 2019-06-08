@@ -73,9 +73,14 @@ To experiment our contributions we split the famous CIFAR10 dataset to 2 super-c
 
 <img src="cifar10_dataset.PNG"/>
 
+The decision is as follow
+<img src="cifar10_XOR.jpg"/>
+
+
 <h3> Experiments </h3>
 
-<img src="cifar10_XOR.jpg"/>
+
+Here the results of classic softmax and our multi-optional-softmax implementation.
 
 <table>
  <tr> <th>         </th> <th> animals or vehicles ? </th> <th> CIFAR10 </th> </tr>
@@ -83,8 +88,9 @@ To experiment our contributions we split the famous CIFAR10 dataset to 2 super-c
   <tr> <th> softmax <br/> 10 output </th> <td> 92.63% <red>*</red>               </td> <td> <b>66.69%</b> </td> </tr>
  <tr> <th> multi optional softmax </th> <td> <b>93.30%</b>             </td> <td> 65.86% </td> </tr>
  </table>
-
 &#42; To classify "animals or vehicles" with 10 output softmax we look if the class predicted belong to animal or vehicle super-class. 
+
+We can observe classify 2 super-class is better describe with our multi-optional-softmax.
 
 <h2> References </h2>
 
