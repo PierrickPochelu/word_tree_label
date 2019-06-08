@@ -66,11 +66,12 @@ The point : (0.92;-0.15) have label [(0;1);(-1;-1)] meaning the point is to the 
 
 <h2> Application on CIFAR10 </h2>
 
- Cifar10 Cifar10 can be downloaded :  https://www.cs.toronto.edu/~kriz/cifar.html 
+We experiment a deep learning on CIFAR10 with bother softmax layers and our multi-optional-softmax. Figure below show decision tree process learnt by . We use the neural network on . Cifar10 can be downloaded :  https://www.cs.toronto.edu/~kriz/cifar.html 
 
 To experiment our contributions we split the famous CIFAR10 dataset to 2 super-classes : animals and vehicles.
 
-We experiment a deep learning on CIFAR10 with bother softmax layers and our multi-optional-softmax. Figure below show decision tree process learnt by . We use the neural network on 
+
+<img src="cifar10_dataset.PNG"/>
 
 <img src="cifar10_XOR.jpg"/>
 
