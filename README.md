@@ -74,7 +74,7 @@ We experiment a deep learning on CIFAR10 with bother softmax layers and our mult
  <tr> <th> multi optional softmax </th> <td> <b>93.30%</b>             </td> <td> 65.86% </td> </tr>
  </table>
 
-&#42; To classify "animals or vehicles" with softmax we use the class predicted.
+&#42; To classify "animals or vehicles" with 10 output softmax we look if the class predicted belong is an animal or vehicle. 
 
 <h2> References </h2>
 
