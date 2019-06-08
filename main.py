@@ -2,21 +2,21 @@ import numpy as np
 import keras
 from keras import backend as K
 import tensorflow as tf
-
-epoch=100
-batch_size=8
-split=0.5
-nb_experiments=4
-
 import os
-os.environ["CUDA_VISIBLE_DEVICES"]="-1"
+import get_cifar10
+import get_model
+# implementation of CNN with simple softmax : https://keras.io/examples/cifar10_cnn/
 
-def CE(W):
-    def optional_categorical_crossentropy(target, output, from_logits=False):
-        COEF=tf.cast(tf.not_equal(target, -1), tf.float32)
+epoch = 25
+batch_size = 32
 
-        # no weights 0.84449674 0.55512284 0.2893739
-        # [0.83406194 0.56181118 0.27225076]
+
+os.environ["CUDA_VISIBLE_DEVICES"] = "0"
+
+
+def multi_optional_weighted_crossentropy(W):
+    def optional_weighted_crossentropy(target, output, from_logits=False):
+        coef_optional = tf.cast(tf.not_equal(target, -1), tf.float32)
 
         if not from_logits:
             output /= tf.reduce_sum(output,
@@ -26,193 +26,121 @@ def CE(W):
             _epsilon = K.epsilon()
             output = tf.clip_by_value(output, _epsilon, 1. - _epsilon)
 
-            ce=tf.multiply(target * tf.log(output),COEF)*W
-            r=- tf.reduce_sum(ce,len(output.get_shape()) - 1)
+            ce = tf.multiply(target * tf.log(output), coef_optional) * W
+            r = - tf.reduce_sum(ce, len(output.get_shape()) - 1)
             return r
         else:
             return tf.nn.softmax_cross_entropy_with_logits(labels=target,
                                                            logits=output)
-    return optional_categorical_crossentropy
+
+    return optional_weighted_crossentropy
 
 
-def reformat_to_multi_output(y):
-    y_double=[]
-    y_double.append( np.array([ysample[0]  for ysample in y ]) )
-    y_double.append( np.array([ysample[1]  for ysample in y ]) )
-    return y_double
 
 
-def get_model(W,is_out1=True, is_out2=True):
-    input = keras.models.Input(shape=(2,))
-    x = keras.layers.Dense(5, activation='relu')(input)
-    if is_out1:
-
-        output1 = keras.layers.Dense(2, activation='softmax')(x)
-    if is_out2:
-        output2 = keras.layers.Dense(3, activation='softmax')(x)
-
-
-    if is_out1 and is_out2:
-        model = keras.models.Model(inputs=input, outputs=[output1, output2])
-        model.compile(optimizer='adam',
-                      loss=[CE(W[0]), CE(W[1])])
-    elif is_out1:
-        model = keras.models.Model(inputs=input, outputs=[output1])
-        model.compile(optimizer='adam',
-                      loss=[CE(W[0])])
-    elif is_out2:
-        model = keras.models.Model(inputs=input, outputs=[output2])
-        model.compile(optimizer='adam',
-                      loss=[CE(W[1])])
-    else:
-        raise ValueError("No is_out")
-
-
-    return model
 
 def compute_weights_for_CE(y):
-    first_sample=0
-    nboutputs=y.shape[1]
-    softmax_size=[]
-    for i in range(nboutputs):
-        nb_class_in_this_out=y[first_sample][i].shape[0]
-        softmax_size.append(nb_class_in_this_out)
+    first_sample = 0
+    nboutputs = len(y)
 
 
     # compute frequencies
-    tree=[]
-    for i in range(nboutputs): # for each softmax i
-        y_output_i=np.array(list(y[:,i]))
+    tree = []
+    for i in range(nboutputs):  # for each softmax i
+        y_output_i = y[i]
+        softmax_size=len(y_output_i[first_sample])
 
-        nb_minus_1=np.zeros(softmax_size[i])
-        nb_0=np.zeros(softmax_size[i])
-        nb_1 = np.zeros(softmax_size[i])
-        for j in range(softmax_size[i]): # for each ouput j in softmax i
-            nb_minus_1[j]=(y_output_i[:,j]==-1).sum()
-            nb_0[j] = (y_output_i[:,j] == 0).sum()
-            nb_1[j] = (y_output_i[:,j] == 1).sum()
+        #compute value frequencies for i
+        nb_minus_1 = np.zeros(softmax_size)
+        nb_0 = np.zeros(softmax_size)
+        nb_1 = np.zeros(softmax_size)
+        for j in range(softmax_size):  # for each ouput j in softmax i
+            nb_minus_1[j] = (y_output_i[:, j] == -1).sum()
+            nb_0[j] = (y_output_i[:, j] == 0).sum()
+            nb_1[j] = (y_output_i[:, j] == 1).sum()
 
-        res_i=nb_1/(nb_1+nb_0)
-        tree.append( res_i )
+        res_i = nb_1 / (nb_1 + nb_0)
+        tree.append(res_i)
 
     # compute weights
-    #scale=1./np.sum(tree[i],axis=0)
+    # scale=1./np.sum(tree[i],axis=0)
     for i in range(nboutputs):
-        tree[i] = (1./tree[i])
+        tree[i] = (1. / tree[i])
 
     # normalize weights
-    tree = [ softmax_weights/np.sum(softmax_weights) for softmax_weights in tree ]
+    tree = [softmax_weights / np.sum(softmax_weights) for softmax_weights in tree]
 
     return tree
 
 
-def get_synthetic_dataset(imbalance_nb=300):
-    # create X
-    nf=np.random.uniform((0.5,-0.5),(1.5,0.5),(imbalance_nb,2)) #1,0
-    f1=np.random.uniform((-0.5,-0.5),(0.5,0.5),(100,2)) # 0,0
-    f2=np.random.uniform((-0.5,0.5),(0.5,1.5),(100,2)) # 0,1
-    f3=np.random.uniform((-0.5,1.5),(0.5,2.5),(100,2)) #0,2
-    x=np.concatenate((nf,f1,f2,f3))
 
-    # create Y
-    class1= [np.array([1,0]),np.array([-1,-1,-1])]
-    class2= [np.array([0,1]),np.array([1,0,0])]
-    class3= [np.array([0,1]),np.array([0,1,0])]
-    class4= [np.array([0,1]),np.array([0,0,1])]
-    ynf=np.array([ class1 for i in range(imbalance_nb)])
-    yf1=np.array([ class2 for i in range(100)])
-    yf2=np.array([ class3 for i in range(100)])
-    yf3=np.array([ class4 for i in range(100)])
-    y=np.concatenate((ynf,yf1,yf2,yf3))
 
-    # shuffle
-    ids=np.array(range(x.shape[0]))
-    np.random.shuffle(ids)
-    y=y[ids]
-    x=x[ids]
-
-    # split train/test
-    split_id=int(x.shape[0]*split)
-    xtest=x[:split_id]
-    xtrain=x[split_id:]
-    ytest=y[:split_id]
-    ytrain=y[split_id:]
-
-    weights=compute_weights_for_CE(ytrain) # Warning : keras does not understand weights in multi softmax context
-
-    # reformat Y
-    ytrain_double=reformat_to_multi_output(ytrain)
-    ytest_double=reformat_to_multi_output(ytest)
+def evaluate(model,xtest,ytest,ytest_multisoftmax):
 
 
 
-    return xtrain, ytrain_double, xtest, ytest_double,weights
+    output=model.predict(xtest)
+    pred1 = np.argmax(output[0],axis=1)
+    pred2 = np.argmax(output[1],axis=1)
+    pred3 = np.argmax(output[2],axis=1)
+    y1=np.argmax(ytest_multisoftmax[0],axis=1)
+    y2=np.argmax(ytest_multisoftmax[1],axis=1)
+    y3=np.argmax(ytest_multisoftmax[2],axis=1)
+
+    accuracy=get_cifar10.decode_from_multi_to_class(pred1,pred2,pred3,ytest)
+
+    correct_pred1=np.mean( pred1[y1!=-1]==y1[y1!=-1] )
+    correct_pred2=np.mean( pred2[y2!=-1]==y2[y2!=-1] )
+    correct_pred3=np.mean( pred3[y3!=-1]==y3[y3!=-1]  )
+    correct_overall=np.mean(accuracy)
 
 
-if __name__=="__main__":
-    xtrain, ytrain_double, xtest, ytest_double, w = get_synthetic_dataset(imbalance_nb)
 
 
-    assert(len(ytrain_double)==2)
-    assert(ytrain_double[0].shape[1]==2)
-    assert(ytrain_double[1].shape[1]==3)
+    return correct_overall, correct_pred1, correct_pred2, correct_pred3
+
+if __name__ == "__main__":
+    xtrain,ytrain, ytrain_multisoftmax, xtest, ytest, ytest_multisoftmax = get_cifar10.get_cifar10_dataset()
 
 
 
-    print("task1 + task2 + weighted cross entropy")
-    ev=np.array([0.,0.,0.],dtype=float)
-    for i in range(nb_experiments):
-        model = get_model(w,True, True)
-        model.fit(x=xtrain,y=ytrain_double,batch_size=batch_size,epochs=epoch,verbose=0)
-        ev+=model.evaluate(xtest,ytest_double)
-    print("Test loss 1 : " + str(ev[1]/nb_experiments))
-    print("Test loss 2 : " + str(ev[2]/nb_experiments))
+    # multi optional softmax
+    W = compute_weights_for_CE(ytrain_multisoftmax)
+    multi_optional_softmax = [multi_optional_weighted_crossentropy(W[0]),
+                              multi_optional_weighted_crossentropy(W[1]),
+                              multi_optional_weighted_crossentropy(W[2])]
+    print("multi optional softmax : cifar10")
+    model = get_model.get_model(multi_optional_softmax)
+    model.fit(x=xtrain, y=ytrain_multisoftmax, batch_size=batch_size, epochs=epoch, verbose=0)
+    out=evaluate(model,xtest,ytest,ytest_multisoftmax)
+    print(out)
 
 
-    print("task1 + weighted cross entropy")
-    ev=0
-    for i in range(nb_experiments):
-        model = get_model(w[0],True, False)
-        model.fit(x=xtrain,y=ytrain_double[0],batch_size=batch_size,epochs=epoch,verbose=0)
-        ev+=model.evaluate(xtest,ytest_double[0])
-    print("Test loss 1 : " + str(ev/nb_experiments))
+    keras.backend.clear_session()
+    print("cross entropy : cifar10")
+    model = get_model.get_model(nb_output=10)
+    model.fit(x=xtrain, y=ytrain, batch_size=batch_size, epochs=epoch, verbose=0)
+    out=model.predict(xtest)
+    #10 classes
+    y_argmax=np.argmax(ytest,axis=1)
+    out_argmax=np.argmax(out,axis=1)
+    print(np.mean(y_argmax==out_argmax))
+    # 2 classes
+    print("cross entropy : animal or vehicle ? With 10 outputs")
+    out_binary = get_cifar10.animal_or_vehicle(out)
+    out_binary_argmax=out=np.argmax(out_binary,axis=1)
+    ytest_binary = get_cifar10.animal_or_vehicle(ytest)
+    ytest_binary_argmax=np.argmax(ytest_binary,axis=1)
+    print(np.mean(ytest_binary_argmax==out_binary_argmax))
 
 
-    print("task2 + weighted cross entropy")
-    ev=0
-    for i in range(nb_experiments):
-        model = get_model(w[1],False, True)
-        model.fit(x=xtrain,y=ytrain_double[1],batch_size=batch_size,epochs=epoch,verbose=0)
-        ev+=model.evaluate(xtest,ytest_double[1])
-    print("Test loss 2 : " + str(ev/nb_experiments))
+    keras.backend.clear_session()
 
-
-    w=[np.array([0.5,0.5]),np.array([0.33,0.33,0.33])]
-
-
-    print("task1 + task2 + cross entropy")
-    ev=np.array([0.,0.,0.],dtype=float)
-    for i in range(nb_experiments):
-        model = get_model(w,True, True)
-        model.fit(x=xtrain,y=ytrain_double,batch_size=batch_size,epochs=epoch,verbose=0)
-        ev+=model.evaluate(xtest,ytest_double)
-    print("Test loss 1 : " + str(ev[1]/nb_experiments))
-    print("Test loss 2 : " + str(ev[2]/nb_experiments))
-
-
-    print("task1 + cross entropy")
-    ev=0
-    for i in range(nb_experiments):
-        model = get_model(w[0],True, False)
-        model.fit(x=xtrain,y=ytrain_double[0],batch_size=batch_size,epochs=epoch,verbose=0)
-        ev+=model.evaluate(xtest,ytest_double[0])
-    print("Test loss 1 : " + str(ev/nb_experiments))
-
-
-    print("task2 + cross entropy")
-    ev=0
-    for i in range(nb_experiments):
-        model = get_model(w[1],False, True)
-        model.fit(x=xtrain,y=ytrain_double[1],batch_size=batch_size,epochs=epoch,verbose=0)
-        ev+=model.evaluate(xtest,ytest_double[1])
-    print("Test loss 2 : " + str(ev/nb_experiments))
+    print("simple cross entropy : animal or vehicle ? with 2 output neural network")
+    ytrain_binary=get_cifar10.animal_or_vehicle(ytrain)
+    ytest_binary=get_cifar10.animal_or_vehicle(ytest)
+    model = get_model.get_model(nb_output=2)
+    model.fit(x=xtrain, y=np.array(ytrain_binary), batch_size=batch_size, epochs=epoch, verbose=0)
+    y_argmax=np.argmax(ytest_binary,axis=1)
+    out=np.argmax(model.predict(xtest),axis=1)
+    print(np.mean(y_argmax==out))
