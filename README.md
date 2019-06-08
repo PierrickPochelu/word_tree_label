@@ -26,11 +26,14 @@ Keras implementation could not do this properly that's why I create the function
 <!-- ------------------------------------------------------------ -->
 <h2> Small examples </h2>
 
+Here a simple where each coordinates (x;y) we want neural network detect the class represented here with color.
+<img src="SC.png"/>
+
+
+
 <h3> Example with inclusive path </h3>
 
-Neural network can answer to those question at the same time.
-One point in the west or east ?
-Are points in the north or south ?
+Neural network can answer to those question at the same time. One point in the west or east ? Are points in the north or south ?
 
 <img src="AND2.jpg"/>
 
