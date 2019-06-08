@@ -85,19 +85,29 @@ Here the results of classic softmax and our multi-optional-softmax implementatio
 <u> After 25 epochs : </u>
 <table>
  <tr> <th>         </th> <th> animals or vehicles ? </th> <th> CIFAR10 </th> </tr>
-  <tr> <th> softmax <br/>  2 output </th> <td> 93.05%               </td> <td> - </td> </tr>
+  <tr> <th> softmax <br/>  2 output </th> <td> 92.11%               </td> <td> - </td> </tr>
   <tr> <th> softmax <br/> 10 output </th> <td> 92.63% <red>*</red>               </td> <td> <b>66.69%</b> </td> </tr>
  <tr> <th> multi optional softmax </th> <td> <b>93.30%</b>             </td> <td> 65.86% </td> </tr>
  </table>
 &#42; To classify "animals or vehicles" with 10 output softmax we look if the class predicted belong to animal or vehicle super-class. 
 
 <br/>
+
+<u> After 50 epochs : </u>
+<table>
+ <tr> <th>         </th> <th> animals or vehicles ? </th> <th> CIFAR10 </th> </tr>
+  <tr> <th> softmax <br/>  2 output </th> <td> 92.67%               </td> <td> - </td> </tr>
+  <tr> <th> softmax <br/> 10 output </th> <td> 93.15% <red>*</red>               </td> <td> <b>68.33%</b> </td> </tr>
+ <tr> <th> multi optional softmax </th> <td> <b>93.47%</b>             </td> <td> 66.11% </td> </tr>
+ </table>
+
+
 <b> We can observe super-classes are better described when we add their sub-classes information. </b>
 
 <h2> References </h2>
 
 <a href="https://arxiv.org/abs/1612.08242"> YOLO9000 </a>
 
-Alex Krizhevsky, Learning Multiple Layers of Features from Tiny Images, 2009. https://www.cs.toronto.edu/~kriz/cifar.html  
+Alex Krizhevsky, <it>Learning Multiple Layers of Features from Tiny Images</it>, 2009. https://www.cs.toronto.edu/~kriz/cifar.html  
 
 Joseph Redmon an Ali Farhadi, <it> YOLO9000: Better, Faster, Stronger</it>, CoRR journal, abs/1612.08242, 2016, http://arxiv.org/abs/1612.08242
