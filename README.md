@@ -40,7 +40,7 @@ Neural network can answer to some questions at the same time. The neural network
 
 Neural network have here 2 output softmax [ (P<sub>west</sub>;P<sub>east</sub>) ; (P<sub>north</sub>; P<sub>south</sub>) ] . 
 
-Label to compute loss and run back-propagation process are as follow :
+Labels to compute loss and run back-propagation process are as follow :
 <table>
  <tr> <th>     Class name    </th> <th> optional-softmax1 label </th> <th> optional-softmax2 label </th> </tr>
   <tr> <th> south-west </th> <td> P<sub>south</sub>=1;P<sub>north</sub>=0 </td> <td> P<sub>west</sub>=1;P<sub>east</sub>=0 </td> </tr>
@@ -68,7 +68,13 @@ The label contains multi-one-hot-vector. Some have a special value "-1" to disab
 So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west"
 The point : (0.92;-0.15) have label [(0;1);(-1;-1)] meaning the point is to the East, so know South/North softmax is disabled with "-1".
 
-
+Labels are as follow :
+<table>
+ <tr> <th>     Class name    </th> <th> optional-softmax1 label </th> <th> optional-softmax2 label </th> </tr>
+  <tr> <th> west-south </th> <td> P<sub>west</sub>=1;P<sub>east</sub>=0 </td> <td> P<sub>south</sub>=1;P<sub>orth</sub>=0 </td> </tr>
+  <tr> <th> west-north </th> <td> P<sub>west</sub>=1;P<sub>east</sub>=0 </td> <td> P<sub>south</sub>=0;P<sub>north</sub>=1 </td> </tr>
+  <tr> <th> east </th> <td> P<sub>west</sub>=0;P<sub>east</sub>=1 </td> <td> P<sub>south</sub>=-1;P<sub>north</sub>=-1 </td> </tr> 
+ </table>
 
 <!-- ------------------------------------------------------------ -->
 
