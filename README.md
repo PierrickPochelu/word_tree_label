@@ -5,7 +5,7 @@ The main characterist of supervised classification with neural network is produc
 </p>
  
 <p>
-Recent developpement in deep learning regarding smarter results introduced decision tree as output of neural network. 
+Recent developpement in deep learning regarding smarter results introduced decision tree as output of neural network (rf:Yolo9000). Decision tree are a more informative manner to explain a decision better than class MLP vector-like prediction. Decision tree structure class like an hierarchy of ideas.
 </p>
 
 <p>
@@ -148,5 +148,3 @@ Yongxin Yang and Irene Garcia Morillo and  Timothy M. Hospedales, <it> Deep Neur
 
 Yani Ioannou and Duncan P. Robertson and Darko Zikic and Peter Kontschieder and Jamie Shotton and Matthew Brown and Antonio Criminisi, <it> Decision Forests, Convolutional Networks and the Models in-Between </it>, CoRR journal abs/1603.01250, 2016, http://arxiv.org/abs/1603.01250
 
-
-Randall Balestriero, <it> Neural Decision Trees </it> https://arxiv.org/pdf/1702.07360.pdf
