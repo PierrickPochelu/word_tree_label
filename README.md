@@ -1,16 +1,24 @@
 <h1> Neural network to learn paths in decision tree </h1>
 
 
-The main characterist of supervised classification with neural network is produce prediction with one softmax layer. I implement and experiment neural network with output as path in a decision tree. Some node of this tree can be inclusive or exclusive. Recent developpement in deep learning regarding smarter results introduced decision tree as output of neural network. I propose "optional-multi-softmax" Keras implementation witch unify inclusive and exclusive nodes of those decision tree.
+The main characterist of supervised classification with neural network is produce prediction with one softmax layer. We implement and experiment neural network with output as path in a decision tree.  Our approach recursively partition the semantic of input space and assign label to final nodes. Our neural network jointly learns to extract features from image via CNN and classify object via decision tree. The structure of neural network is fixed and each decision is made with classic softmax layers. To use our architecture dataset need to be labeled as tree-based structure.
+
+Some node, called gate, of this tree can be parallel or exclusive. Recent developpement in deep learning regarding smarter results introduced decision tree as output of neural network. I propose "optional-multi-softmax" to implement decision tree and unify parallel and exclusive gates.
+
+
+
 
 This tree decision process is coded as multi-softmax output layer. The expected path (i.e. label) of the neural network is coded with multi-softmax.
 
 
-Softmax is already exclusive so why do we bother with an exlcusive decision tree ? There are many answers. 
+Classic softmax layer is already exclusive so why do we bother with an exlcusive decision tree ? There are many answers. 
 <ul>
 <li> If you split one big question Q to a sequence of question q1 q2 q3. Give good answer to q1 and q2 but fail to q3 give you an limited distance to the groundtruth in the decision tree because you are arrived and succeed to q2. For example detect "cat" as "dog" is more acceptable than a "cat" with "car", because cats and dogs are of the same super-class "mammal". </li>
 <li> It enrich the dataset with more information <a href="https://arxiv.org/abs/1612.08242"> YOLO9000</a>. It gives intermediate information to your data to the system. "cat" and "dog" are of the same category mammals, "car" and "trucks" are vehicles etc.... . And more, each possible answer at each stage is reduced. </li>
 <li> Spliting answers allow to a better understanging of neural network decision. </li>
+<li> Bottom of tree can be poorly sampled because data is rare, but super-class can be correctly chosen. Our approach is more robust to the lack of data. </li>
+<li> if the network sees a picture and detect with high confidence an animal but is uncertain
+what type of animal it is, we still know it is an animal. </li>
 </ul>
 
 My contribution contains :
@@ -133,4 +141,9 @@ After 50 epochs
 
 Alex Krizhevsky, <it>Learning Multiple Layers of Features from Tiny Images</it>, 2009. https://www.cs.toronto.edu/~kriz/cifar.html  
 
-Joseph Redmon an Ali Farhadi, <it> YOLO9000: Better, Faster, Stronger</it>, CoRR journal, abs/1612.08242, 2016, http://arxiv.org/abs/1612.08242
+Joseph Redmon an Ali Farhadi, <it> YOLO9000: Better, Faster, Stronger</it>, CoRR journal abs/1612.08242, 2016, http://arxiv.org/abs/1612.08242
+
+Yongxin Yang and Irene Garcia Morillo and  Timothy M. Hospedales, <it> Deep Neural Decision Trees </it>, CoRR journal abs/1806.06988, 2018, http://arxiv.org/abs/1806.06988
+
+Yani Ioannou and Duncan P. Robertson and Darko Zikic and Peter Kontschieder and Jamie Shotton and Matthew Brown and Antonio Criminisi, <it> Decision Forests, Convolutional Networks and the Models in-Between </it>, CoRR journal abs/1603.01250, 2016, http://arxiv.org/abs/1603.01250
+
