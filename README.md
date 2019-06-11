@@ -26,10 +26,8 @@ Keras implementation could not do this properly that's why I create the function
 <!-- ------------------------------------------------------------ -->
 <h2> Decision tree implementation </h2>
 
-Here a simple where each coordinates (x;y) we want neural network detect the class represented here with color.
-<img src="SC2.png" width="40%" height="40%"/>
+Decision tree contains 2 kinds of nodes : exclusive gate and parallel gate.
 
-This small examples are an intuivie purpose, in this simple  case a classic softmax with 3 output work better.
 
 <h3> Parallel gate </h3>
 
@@ -38,7 +36,7 @@ Neural network can answer to some questions at the same time. The neural network
 <img src="AND2.jpg" width="75%" height="75%"/>
  In this example we answer to a succession of questions. One point in the west or east ? Are points in the north or south ?
 
-Neural network have here 2 output softmax [ (P<sub>west</sub>;P<sub>east</sub>) ; (P<sub>north</sub>; P<sub>south</sub>) ] . 
+The multi-optional-softmax contains 2 softmax.
 
 Labels to compute loss and run back-propagation process are as follow :
 <table>
@@ -49,20 +47,20 @@ Labels to compute loss and run back-propagation process are as follow :
   <tr> <th> north-east </th> <td> P<sub>south</sub>=0;P<sub>north</sub>=1 </td> <td> P<sub>west</sub>=0;P<sub>east</sub>=1 </td> </tr> 
  </table>
 
-So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west".
+
 
 
 
 <h3> Exclusive gate </h3>
 
-Neural network can answer to a succession of questions. The neural network answer to a question by taking one path from one exclusive node ("X" symbol below).
+Neural network can answer to a succession of questions. The neural network answer to a question by taking one path from one exclusive node ("X" symbol below). For example we can answare : This point is in the west or east ? If it is in the west, is it in the south or north ?
 
-For example we can answare : This point is in the west or east ? If it is in the west, is it in the south or north ?
+ In our multi-one-hot-vector exclusive gates are coded as classic softmax layers.
 
 <img src="XOR.jpg" width="50%" height="50%"/>
 
 
-The label contains multi-one-hot-vector. Some have a special value "-1" to disable backpropagation.
+Some label havea special value "-1" to disable backpropagation through those softmax layers.
 
 
 So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west"
