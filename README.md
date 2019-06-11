@@ -74,11 +74,11 @@ Here the corresponding decision tree
 
 <img src="cifar10_XOR.jpg"/>
 
-So the last layer predict 
+So the last block is multi-optional-softmax
 <ul>
-<li> P<sub>animal</sub>;P<sub>vehicle</sub> </li>
-<li> P<sub>bird</sub>; P<sub>cat</sub>; P<sub>deer</sub>; P<sub>dog</sub>; P<sub>frog</sub>; P<sub>horse</sub>;</li>
-<li> P<sub>air</sub>; P<sub>car</sub>; P<sub>ship</sub>; P<sub>truck</sub></li>
+<li> optional-softmax1: P<sub>animal</sub>;P<sub>vehicle</sub> </li>
+<li> optional-softmax2: P<sub>bird</sub>; P<sub>cat</sub>; P<sub>deer</sub>; P<sub>dog</sub>; P<sub>frog</sub>; P<sub>horse</sub>;</li>
+<li> optional-softmax3: P<sub>air</sub>; P<sub>car</sub>; P<sub>ship</sub>; P<sub>truck</sub></li>
 </ul>
 
 <h3> Experiments </h3>
