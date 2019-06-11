@@ -42,7 +42,7 @@ Decision tree contains 2 kinds of nodes : exclusive gate (one answer among N) an
 Neural network can answer to some questions at the same time. The neural network take all pathes from one inclusive node  ("+" symbol below). 
 
 <img src="AND2.jpg" width="75%" height="75%"/>
- In this example we answer to a succession of questions. Is the  point to the west or east ? Is the point to the north or south ?
+ In this example we answer to two questions independently. Is the  point to the west or east ? Is the point to the north or south ?
 
 The multi-optional-softmax contains 2 softmax.
 
