@@ -148,3 +148,5 @@ Yongxin Yang and Irene Garcia Morillo and  Timothy M. Hospedales, <it> Deep Neur
 
 Yani Ioannou and Duncan P. Robertson and Darko Zikic and Peter Kontschieder and Jamie Shotton and Matthew Brown and Antonio Criminisi, <it> Decision Forests, Convolutional Networks and the Models in-Between </it>, CoRR journal abs/1603.01250, 2016, http://arxiv.org/abs/1603.01250
 
+
+Randall Balestriero, <it> Neural Decision Trees </it> https://arxiv.org/pdf/1702.07360.pdf
