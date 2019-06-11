@@ -65,7 +65,7 @@ The point : (0.92;-0.15) have label [(0;1);(-1;-1)] meaning the point is to the 
 
 We experiment a deep learning on CIFAR10 with bother softmax layers and our multi-optional-softmax. Figure below show decision tree process learnt by . We use the neural network on . Cifar10 can be downloaded :  https://www.cs.toronto.edu/~kriz/cifar.html 
 
-To experiment our contributions we split the famous CIFAR10 dataset to 2 super-classes : animals and vehicles.
+To experiment our contributions we split the famous CIFAR10 dataset to 2 super-classes : animals and vehicles. We will try classify the best we can if one image belong to "animal" or "vehicle" category and then which animal/vehicle is it.
 
 
 <img src="cifar10_dataset.PNG"  width="60%" height="60%"/>
@@ -74,6 +74,12 @@ Here the corresponding decision tree
 
 <img src="cifar10_XOR.jpg"/>
 
+So the last layer predict 
+<ul>
+<li> P<sub>animal</sub>;P<sub>vehicle</sub> </li>
+<li> P<sub>bird</sub>; P<sub>cat</sub>; P<sub>deer</sub>; P<sub>dog</sub>; P<sub>frog</sub>; P<sub>horse</sub>;</li>
+<li> P<sub>air</sub>; P<sub>car</sub>; P<sub>ship</sub>; P<sub>truck</sub></li>
+</ul>
 
 <h3> Experiments </h3>
 
