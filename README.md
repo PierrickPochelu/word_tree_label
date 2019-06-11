@@ -35,7 +35,7 @@ This small examples are an intuivie purpose, in this simple  case a classic soft
 
 Neural network can answer to some questions at the same time. The neural network take all pathes from one inclusive node. 
 
-<img src="AND2.jpg" width="50%" height="50%"/>
+<img src="AND2.jpg" width="75%" height="75%"/>
  In this example we answer to a succession of questions. One point in the west or east ? Are points in the north or south ?
 
 Neural network have here 2 output softmax [ (P<sub>west</sub>;P<sub>east</sub>) ; (P<sub>north</sub>; P<sub>south</sub>) ] . So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west".
@@ -48,7 +48,7 @@ Neural network can answer to a succession of questions. The neural network answe
 
 For example we can answare : This point is in the west or east ? If it is in the west, is it in the south or north ?
 
-<img src="XOR.jpg" width="75%" height="75%"/>
+<img src="XOR.jpg" width="50%" height="50%"/>
 
 
 The label contains multi-one-hot-vector. Some have a special value "-1" to disable backpropagation.
