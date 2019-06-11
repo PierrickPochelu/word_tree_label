@@ -68,7 +68,7 @@ We experiment a deep learning on CIFAR10 with bother softmax layers and our mult
 To experiment our contributions we split the famous CIFAR10 dataset to 2 super-classes : animals and vehicles.
 
 
-<img src="cifar10_dataset.PNG"  width="50%" height="50%"/>
+<img src="cifar10_dataset.PNG"  width="60%" height="60%"/>
 
 Here the corresponding decision tree
 
