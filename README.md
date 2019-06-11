@@ -33,7 +33,7 @@ This small examples are an intuivie purpose, in this simple  case a classic soft
 
 <h3> Parallel gate </h3>
 
-Neural network can answer to some questions at the same time. The neural network take all pathes from one inclusive node. 
+Neural network can answer to some questions at the same time. The neural network take all pathes from one inclusive node  ("+" symbol below). 
 
 <img src="AND2.jpg" width="75%" height="75%"/>
  In this example we answer to a succession of questions. One point in the west or east ? Are points in the north or south ?
@@ -44,7 +44,7 @@ Neural network have here 2 output softmax [ (P<sub>west</sub>;P<sub>east</sub>) 
 
 <h3> Exclusive gate </h3>
 
-Neural network can answer to a succession of questions. The neural network answer to a question by taking one path from one exclusive node.
+Neural network can answer to a succession of questions. The neural network answer to a question by taking one path from one exclusive node ("X" symbol below).
 
 For example we can answare : This point is in the west or east ? If it is in the west, is it in the south or north ?
 
