@@ -24,34 +24,31 @@ Keras implementation could not do this properly that's why I create the function
  More complex decision logic are possible, like "at least N path among M with N<M", but not possible apriori with softmax layer build to choose one decision to each stage of decision tree.
 
 <!-- ------------------------------------------------------------ -->
-<h2> Small examples </h2>
+<h2> Decision tree implementation </h2>
 
 Here a simple where each coordinates (x;y) we want neural network detect the class represented here with color.
 <img src="SC2.png" width="60%" height="60%"/>
 
 This small examples are an intuivie purpose, in this simple  case a classic softmax with 3 output work better.
 
-<h3> Example with inclusive path </h3>
+<h3> Inclusive path </h3>
 
-Neural network can answer to those question at the same time. One point in the west or east ? Are points in the north or south ?
+Neural network can answer to some questions at the same time. The neural network take all pathes from one inclusive node. 
 
-<img src="AND2.jpg"/>
+<img src="AND2.jpg" width="50%" height="50%"/>
+ In this example we answer to a succession of questions. One point in the west or east ? Are points in the north or south ?
 
-Neural network have 2 output softmax :
-One label associated to one point have this pattern : [ (P<sub>west</sub>;P<sub>east</sub>) ; (P<sub>north</sub>; P<sub>south</sub>) ]
-So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west"
-One correct prediction can be [(0.2;0.8);(0.1;0.9)]
+Neural network have here 2 output softmax [ (P<sub>west</sub>;P<sub>east</sub>) ; (P<sub>north</sub>; P<sub>south</sub>) ] . So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west".
 
 
 
-<h3> Example with exclusive path </h3>
+<h3> Exclusive path </h3>
 
-Neural network can answer to those questions at the same time.
+Neural network can answer to a succession of questions. The neural network answer to a question by taking one path from one exclusive node.
 
-Are points in the west or east ?
-If it is in the west, is it in the north ?
+For example we can answare : This point is in the west or east ? If it is in the west, is it in the south or north ?
 
-<img src="XOR.jpg"/>
+<img src="XOR.jpg" width="50%" height="50%"/>
 
 
 The label contains multi-one-hot-vector. Some have a special value "-1" to disable backpropagation.
