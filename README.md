@@ -1,16 +1,14 @@
 <h1> Neural network to learn paths in decision tree </h1>
 
+<p>
+The main characterist of supervised classification with neural network is produce prediction with one softmax layer. We implement and experiment neural network with output as path in a decision tree.  Our approach recursively partition the semantic of input space and assign label to final nodes. Our neural network jointly learns to extract features from image via CNN and classify object via decision tree. The structure of neural network is fixed and each gate is answered with one classic softmax layer. The neural network is derivable and can be learn end-to-end manner as usual. To use our architecture dataset need to be labeled as tree-based structure.
+</p>
+ 
+<p>
+Recent developpement in deep learning regarding smarter results introduced decision tree as output of neural network. 
+</p>
 
-The main characterist of supervised classification with neural network is produce prediction with one softmax layer. We implement and experiment neural network with output as path in a decision tree.  Our approach recursively partition the semantic of input space and assign label to final nodes. Our neural network jointly learns to extract features from image via CNN and classify object via decision tree. The structure of neural network is fixed and each decision is made with classic softmax layers. The neural network is derivable and learn end-to-end manner as usal. To use our architecture dataset need to be labeled as tree-based structure.
-
-Some node, called gate, of this tree can be parallel or exclusive. Recent developpement in deep learning regarding smarter results introduced decision tree as output of neural network. I propose "optional-multi-softmax" to implement decision tree and unify parallel and exclusive gates.
-
-
-
-
-This tree decision process is coded as multi-softmax output layer. The expected path (i.e. label) of the neural network is coded with multi-softmax.
-
-
+<p>
 Classic softmax layer is already exclusive so why do we bother with an exlcusive decision tree ? There are many answers. 
 <ul>
 <li> If you split one big question Q to a sequence of question q1 q2 q3. Give good answer to q1 and q2 but fail to q3 give you an limited distance to the groundtruth in the decision tree because you are arrived and succeed to q2. For example detect "cat" as "dog" is more acceptable than a "cat" with "car", because cats and dogs are of the same super-class "mammal". </li>
@@ -20,16 +18,17 @@ Classic softmax layer is already exclusive so why do we bother with an exlcusive
 <li> if the network sees a picture and detect with high confidence an animal but is uncertain
 what type of animal it is, we still know it is an animal. </li>
 </ul>
+</p>
 
+<p>
 My contribution contains :
 <ul>
 <li> Keras implementation of a new block of layers I called "multi-optional-softmax". It unify code of exclusive and inclusive nodes. </li>
 <li> A new way to save labels which describe a path on the decision tree. I introduce the storage of arbitrary value -1 to disable backpropagation through softmax layers. </li>
 </ul>
+</p>
 
-Keras implementation could not do this properly that's why I create the function "CE(W)" which return a "weigthed-optional-multi-softmax" layer.
-
- More complex decision logic are possible, like "at least N path among M with N<M", but not possible apriori with softmax layer build to choose one decision to each stage of decision tree.
+<p> Keras implementation could not do this properly that's why I create the function "multi-optional-softmax(W)" which return a "weigthed-optional-multi-softmax" layer.  </p>
 
 <!-- ------------------------------------------------------------ -->
 <h2> Decision tree implementation </h2>
@@ -135,6 +134,8 @@ After 50 epochs
 </p>
 
 <b> We can observe super-classes are better described when we add their sub-classes information in the learning process. </b>
+
+More complex decision logic are possible, like "at least N path among M with N<M", but not possible apriori with softmax layer build to choose one decision to each stage of decision tree.
 
 <h2> References </h2>
 
