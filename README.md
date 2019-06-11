@@ -27,7 +27,7 @@ Keras implementation could not do this properly that's why I create the function
 <h2> Decision tree implementation </h2>
 
 Here a simple where each coordinates (x;y) we want neural network detect the class represented here with color.
-<img src="SC2.png" width="60%" height="60%"/>
+<img src="SC2.png" width="40%" height="40%"/>
 
 This small examples are an intuivie purpose, in this simple  case a classic softmax with 3 output work better.
 
