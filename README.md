@@ -38,7 +38,18 @@ Neural network can answer to some questions at the same time. The neural network
 <img src="AND2.jpg" width="75%" height="75%"/>
  In this example we answer to a succession of questions. One point in the west or east ? Are points in the north or south ?
 
-Neural network have here 2 output softmax [ (P<sub>west</sub>;P<sub>east</sub>) ; (P<sub>north</sub>; P<sub>south</sub>) ] . So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west".
+Neural network have here 2 output softmax [ (P<sub>west</sub>;P<sub>east</sub>) ; (P<sub>north</sub>; P<sub>south</sub>) ] . 
+
+Label to compute loss and run back-propagation process are as follow :
+<table>
+ <tr> <th>     Class name    </th> <th> optional-softmax1 label </th> <th> optional-softmax2 label </th> </tr>
+  <tr> <th> south-west </th> <td> P<sub>south</sub>=1;P<sub>north</sub>=0 </td> <td> P<sub>west</sub>=1;P<sub>east</sub>=0 </td> </tr>
+  <tr> <th> south-east </th> <td> P<sub>south</sub>=1;P<sub>north</sub>=0 </td> <td> P<sub>west</sub>=0;P<sub>east</sub>=1 </td> </tr>
+  <tr> <th> north-west </th> <td> P<sub>south</sub>=0;P<sub>north</sub>=1 </td> <td> P<sub>west</sub>=1;P<sub>east</sub>=0 </td> </tr>
+  <tr> <th> north-east </th> <td> P<sub>south</sub>=0;P<sub>north</sub>=1 </td> <td> P<sub>west</sub>=0;P<sub>east</sub>=1 </td> </tr> 
+ </table>
+
+So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west".
 
 
 
