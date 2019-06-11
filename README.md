@@ -42,7 +42,7 @@ Decision tree contains 2 kinds of nodes : exclusive gate (one answer among N) an
 Neural network can answer to some questions at the same time. The neural network take all pathes from one inclusive node  ("+" symbol below). 
 
 <img src="AND2.jpg" width="75%" height="75%"/>
- In this example we answer to a succession of questions. One point in the west or east ? Are points in the north or south ?
+ In this example we answer to a succession of questions. Is the  point to the west or east ? Is the point to the north or south ?
 
 The multi-optional-softmax contains 2 softmax.
 
@@ -61,14 +61,14 @@ Labels to compute loss and run back-propagation process are as follow :
 
 <h3> Exclusive gate </h3>
 
-Neural network can answer to a succession of questions. The neural network answer to a question by taking one path from one exclusive node ("X" symbol below). For example we can answare : This point is in the west or east ? If it is in the west, is it in the south or north ?
+Neural network can answer to a succession of questions. The neural network answer to a question by taking one path from one exclusive node ("X" symbol below). For example we can answare : Is the point to the west or east ? If it is in the west, is it in the south or north ?
 
- In our multi-one-hot-vector exclusive gates are coded as classic softmax layers.
+ In our multi-one-hot-vector exclusive gates are coded as classic softmax layers. The decision took lead to the next question and the other way is ignored.
 
 <img src="XOR.jpg" width="50%" height="50%"/>
 
 
-Some label havea special value "-1" to disable backpropagation through those softmax layers.
+Some label havea special value "-1" to disable backpropagation through those ignored softmax layers.
 
 
 So  the point : (-0.33;0.44) have label [(1;0);(0;1)] meaning "south-west"
