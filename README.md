@@ -48,7 +48,7 @@ Neural network can answer to a succession of questions. The neural network answe
 
 For example we can answare : This point is in the west or east ? If it is in the west, is it in the south or north ?
 
-<img src="XOR.jpg" width="50%" height="50%"/>
+<img src="XOR.jpg" width="75%" height="75%"/>
 
 
 The label contains multi-one-hot-vector. Some have a special value "-1" to disable backpropagation.
