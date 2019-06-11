@@ -26,7 +26,7 @@ Keras implementation could not do this properly that's why I create the function
 <!-- ------------------------------------------------------------ -->
 <h2> Decision tree implementation </h2>
 
-Decision tree contains 2 kinds of nodes : exclusive gate and parallel gate.
+Decision tree contains 2 kinds of nodes : exclusive gate (one answer among N) and parallel gate (all N sub-questions are asked).
 
 
 <h3> Parallel gate </h3>
