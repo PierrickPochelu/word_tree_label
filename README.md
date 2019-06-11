@@ -31,7 +31,7 @@ Here a simple where each coordinates (x;y) we want neural network detect the cla
 
 This small examples are an intuivie purpose, in this simple  case a classic softmax with 3 output work better.
 
-<h3> Inclusive path </h3>
+<h3> Parallel gate </h3>
 
 Neural network can answer to some questions at the same time. The neural network take all pathes from one inclusive node. 
 
@@ -42,7 +42,7 @@ Neural network have here 2 output softmax [ (P<sub>west</sub>;P<sub>east</sub>) 
 
 
 
-<h3> Exclusive path </h3>
+<h3> Exclusive gate </h3>
 
 Neural network can answer to a succession of questions. The neural network answer to a question by taking one path from one exclusive node.
 
@@ -68,7 +68,7 @@ We experiment a deep learning on CIFAR10 with bother softmax layers and our mult
 To experiment our contributions we split the famous CIFAR10 dataset to 2 super-classes : animals and vehicles.
 
 
-<img src="cifar10_dataset.PNG"/>
+<img src="cifar10_dataset.PNG"  width="50%" height="50%"/>
 
 Here the corresponding decision tree
 
