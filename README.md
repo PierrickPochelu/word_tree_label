@@ -11,12 +11,12 @@ Recent developpement in deep learning regarding smarter results introduced decis
 <p>
 Classic softmax layer is already exclusive so why do we bother with an exlcusive decision tree ? There are many answers. 
 <ul>
-<li> If you split one big question Q to a sequence of question q1 q2 q3. Give good answer to q1 and q2 but fail to q3 give you an limited distance to the groundtruth in the decision tree because you are arrived and succeed to q2. For example detect "cat" as "dog" is more acceptable than a "cat" with "car", because cats and dogs are of the same super-class "mammal". </li>
-<li> It enrich the dataset with more information <a href="https://arxiv.org/abs/1612.08242"> YOLO9000</a>. It gives intermediate information to your data to the system. "cat" and "dog" are of the same category mammals, "car" and "trucks" are vehicles etc.... . And more, each possible answer at each stage is reduced. </li>
+<li> If you split one big question Q to a sequence of question q<sub>1</sub> q<sub>2</sub> q<sub>3</sub>. Give good answer to q<sub>1</sub> and q<sub>2</sub> but fail to q<sub>3</sub> give you an limited distance to the groundtruth in the decision tree because you are arrived and succeed to q<sub>2</sub>. For example detect "cat" as "dog" is more acceptable than a "cat" with "car", because cats and dogs are of the same super-class "animals". </li>
+<li> The dataset is enriched with hierarchical information. </li>
 <li> Spliting answers allow to a better understanging of neural network decision. </li>
-<li> Bottom of tree can be poorly sampled because data is rare, but super-class can be correctly chosen. Our approach is more robust to the lack of data. </li>
 <li> if the network sees a picture and detect with high confidence an animal but is uncertain
 what type of animal it is, we still know it is an animal. </li>
+<li> As a consequence of above bullet, bottom of tree can be poorly sampled because data is rare, but super-class can be correctly chosen. Our approach is can be more robust to the lack of data. </li>
 </ul>
 </p>
 
