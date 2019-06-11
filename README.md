@@ -1,7 +1,7 @@
 <h1> Neural network to learn paths in decision tree </h1>
 
 
-The main characterist of supervised classification with neural network is produce prediction with one softmax layer. We implement and experiment neural network with output as path in a decision tree.  Our approach recursively partition the semantic of input space and assign label to final nodes. Our neural network jointly learns to extract features from image via CNN and classify object via decision tree. The structure of neural network is fixed and each decision is made with classic softmax layers. To use our architecture dataset need to be labeled as tree-based structure.
+The main characterist of supervised classification with neural network is produce prediction with one softmax layer. We implement and experiment neural network with output as path in a decision tree.  Our approach recursively partition the semantic of input space and assign label to final nodes. Our neural network jointly learns to extract features from image via CNN and classify object via decision tree. The structure of neural network is fixed and each decision is made with classic softmax layers. The neural network is derivable and learn end-to-end manner as usal. To use our architecture dataset need to be labeled as tree-based structure.
 
 Some node, called gate, of this tree can be parallel or exclusive. Recent developpement in deep learning regarding smarter results introduced decision tree as output of neural network. I propose "optional-multi-softmax" to implement decision tree and unify parallel and exclusive gates.
 
