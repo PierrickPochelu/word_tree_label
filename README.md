@@ -74,12 +74,14 @@ Here the corresponding decision tree
 
 <img src="cifar10_XOR.jpg"/>
 
-So the last block is multi-optional-softmax
+Our multi-optional-softmax is coded as follow :
 <ul>
 <li> optional-softmax1: P<sub>animal</sub>;P<sub>vehicle</sub> </li>
 <li> optional-softmax2: P<sub>bird</sub>; P<sub>cat</sub>; P<sub>deer</sub>; P<sub>dog</sub>; P<sub>frog</sub>; P<sub>horse</sub>;</li>
 <li> optional-softmax3: P<sub>air</sub>; P<sub>car</sub>; P<sub>ship</sub>; P<sub>truck</sub></li>
 </ul>
+
+To code label as see in section "Decision Tree implementation" when animal is cat optional-softmax3 is disabled. optional-softmax1 label is P<sub>animal</sub>=1;P<sub>vehicle</sub>=0. optional-softmax2 label contains P<sub>cat</sub>=1 and other probabilities=0.
 
 <h3> Experiments </h3>
 
@@ -109,7 +111,7 @@ After 50 epochs
  </table>
 </p>
 
-<b> We can observe super-classes are better described when we add their sub-classes information. </b>
+<b> We can observe super-classes are better described when we add their sub-classes information in the learning process. </b>
 
 <h2> References </h2>
 
