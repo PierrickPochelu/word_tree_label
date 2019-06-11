@@ -25,6 +25,7 @@ My contribution contains :
 <ul>
 <li> Keras implementation of a new block of layers I called "multi-optional-softmax". It unify code of exclusive and inclusive nodes. </li>
 <li> A new way to save labels which describe a path on the decision tree. I introduce the storage of arbitrary value -1 to disable backpropagation through softmax layers. </li>
+<li>  Experiments of our multi-optional-softmax summarized at the end of this page </li>
 </ul>
 </p>
 
