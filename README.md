@@ -81,7 +81,7 @@ Our multi-optional-softmax is coded as follow :
 <li> optional-softmax3: P<sub>air</sub>; P<sub>car</sub>; P<sub>ship</sub>; P<sub>truck</sub></li>
 </ul>
 
-To code label as see in section "Decision Tree implementation" when animal is cat optional-softmax3 is disabled. optional-softmax1 label is P<sub>animal</sub>=1;P<sub>vehicle</sub>=0. optional-softmax2 label contains P<sub>cat</sub>=1 and other probabilities=0.
+To code label as see in section "Decision Tree implementation" when animal is cat optional-softmax3 is disabled with -1 values. optional-softmax1 label is P<sub>animal</sub>=1;P<sub>vehicle</sub>=0. optional-softmax2 label contains P<sub>cat</sub>=1 and other probabilities=0.
 
 <h3> Experiments </h3>
 
