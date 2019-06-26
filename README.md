@@ -1,7 +1,16 @@
+<p>
+<b>
+The main characterist of supervised classification with neural network is produce predictions as vector probability with one softmax layer. To allow neural network to learn more complex decisions and give them a better representation of the world we suggest to teach them path in decision tree instead. Those works are important to increase the spectrum of possibilities with neural network on real case. Our experiment show better comprehension of super-class of objects. <br/>
+Experiments were held on the CIFAR10 dataset with the Keras suggested implementation, the softmax layer were remplaced by a new kind of layer that return path in decision tree we named multi-optional-softmax. Result show a better accuracy by decreasing by 4.9% error of super class but an increase of 6.6% in inner class due to propagation of error.<br/>
+Our work are generic enough to work on any classification neural network. There is a strong applicability on classification of biological species because beings are naturally classified by the tree of life. <br/>
+<it> Key words : Deep learning, supervised classification, decision tree, semantic </it>
+</b>
+</p>
+
 <h1> Neural network to learn paths in decision tree </h1>
 
 <p>
-The main characterist of supervised classification with neural network is produce prediction with one softmax layer. We implement and experiment neural network with output as path in a decision tree.  Our approach recursively partition the semantic of input space and assign label to final nodes. Our neural network jointly learns to extract features from image via CNN and classify object via decision tree. The structure of neural network is fixed and each gate is answered with one classic softmax layer. The neural network is derivable and can be learn end-to-end manner as usual. To use our architecture dataset need to be labeled as tree-based structure.
+Our approach recursively partition the semantic of input space and assign label to final nodes. Our neural network jointly learns to extract features from image via CNN and classify object via decision tree. The structure of neural network is fixed and each gate is answered with one classic softmax layer. The neural network is derivable and can be learn end-to-end manner as usual. To use our architecture dataset need to be labeled as tree-based structure.
 </p>
  
 <p>
@@ -34,8 +43,13 @@ My contribution contains :
 <!-- ------------------------------------------------------------ -->
 <h2> Decision tree implementation </h2>
 
-Decision tree contains 2 kinds of nodes : exclusive gate (one answer among N) and parallel gate (all N sub-questions are asked).
+<p>
+Our innovative neural network is implemented by changing both the softmax layer and the structure of labels.  The classic softmax is replaced by new kind of layer called multi-softmax-layer which predict path in decision tree returning probability for each node. The structure of labels are not one class but path list of good direction in decision tree describing the correct path.
+</p>
 
+<p>
+Decision tree can contains 2 kinds of nodes : exclusive gate (one answer among N) and parallel gate (all N sub-questions are asked).
+</p>
 
 <h3> Parallel gate </h3>
 
