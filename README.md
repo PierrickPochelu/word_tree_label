@@ -2,8 +2,8 @@
 <b>
 The main characterist of supervised classification with neural network is produce predictions as vector probability with one softmax layer. To allow neural network to learn more complex decisions and give them a better representation of the world we suggest to teach them path in decision tree instead. Those works are important to increase the spectrum of possibilities with neural network on real case. Our experiment show better comprehension of super-class of objects. <br/>
 Experiments were held on the CIFAR10 dataset with the Keras suggested implementation, the softmax layer were remplaced by a new kind of layer that return path in decision tree we named multi-optional-softmax. Result show a better accuracy by decreasing by 4.9% error of super class but an increase of 6.6% in inner class due to propagation of error.<br/>
-Our work are generic enough to work on any classification neural network. There is a strong applicability on classification of biological species because beings are naturally classified by the tree of life. <br/>
-<it> Key words : Deep learning, supervised classification, decision tree, semantic </it>
+Our work are generic enough to work on any classification neural network. There is a strong applicability on classification of biological species because beings are naturally classified by the tree of life. <br/> <br/>
+Key words : Deep learning, supervised classification, decision tree, interpretability
 </b>
 </p>
 
