@@ -25,7 +25,7 @@ Classic softmax layer is already exclusive so why do we bother with an exlcusive
 <li> Spliting answers allow to a better understanging of neural network decision. </li>
 <li> if the network sees a picture and detect with high confidence an animal but is uncertain
 what type of animal it is, we still know it is an animal. </li>
-<li> As a consequence of above bullet, bottom of tree can be poorly sampled because data is rare, but super-class can be correctly chosen. Our approach is can be more robust to the lack of data. </li>
+<li> As a consequence of above bullet, bottom of tree can be poorly sampled because data is rare, but super-class can be correctly chosen. Our approach can be more robust to the lack of data. </li>
 </ul>
 </p>
 
